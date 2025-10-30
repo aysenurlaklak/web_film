@@ -1,5 +1,5 @@
 import React from "react";
-import TVCard from "./TVCard";
+import TVCard from "./TvCard";
 
 const TVlist = ({ shows }) => {
   return (

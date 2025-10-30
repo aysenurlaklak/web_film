@@ -3,7 +3,7 @@ import axios from "axios";
 import { useApp, ACTION_TYPES } from "./Reducer";
 import SearchBox from "./Search";
 import Filters from "./Filters";
-import TVList from "./TVList";
+import TVList from "./TVlist";
 import WatchlistPanel from "./WatchListPanel";
 import Pagination from "./Pagination";
 

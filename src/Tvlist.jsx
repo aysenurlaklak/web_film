@@ -1,7 +1,7 @@
 import React from "react";
 import TVCard from "./TVCard";
 
-const TVList = ({ shows }) => {
+const TVlist = ({ shows }) => {
   return (
     <div className="tv-list">
       {shows.map((show) => (
@@ -11,4 +11,4 @@ const TVList = ({ shows }) => {
   );
 };
 
-export default TVList;
+export default TVlist;

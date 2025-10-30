@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import axios from "axios";
-import { useApp, ACTION_TYPES } from "./Reducer";
-import SearchBox from "./Search";
-import Filters from "./Filters";
-import TVList from "./TVlist";
-import WatchlistPanel from "./WatchListPanel";
-import Pagination from "./Pagination";
+import TVlist from './TVlist'; 
+import WatchListPanel from './WatchListPanel';
+import SearchBox from './Search';
+import Filters from './Filters';
+import Pagination from './Pagination';
+import { useApp, ACTION_TYPES } from './Reducer';
+import axios from 'axios';
+import React, { useEffect } from 'react';
 
 const Home = () => {
   const { state, dispatch } = useApp();
@@ -17,26 +17,29 @@ const Home = () => {
 
   const fetchShows = async () => {
     dispatch({ type: ACTION_TYPES.FETCH_INIT });
-    try {
-      const response = await axios.get(`https://api.tvmaze.com/search/shows?q=${query}`);
-      let filteredShows = response.data.map((item) => item.show);
 
-      // Filtreleme
+    try {
+      const response = await axios.get(
+        `https://api.tvmaze.com/search/shows?q=${query}`
+      );
+
+      let filteredShows = response.data.map(item => item.show);
+
       if (filters.genre) {
-        filteredShows = filteredShows.filter((show) =>
-          show.genres?.includes(filters.genre)
+        filteredShows = filteredShows.filter(show => 
+          show.genres && show.genres.includes(filters.genre)
         );
       }
 
       if (filters.language) {
-        filteredShows = filteredShows.filter(
-          (show) => show.language === filters.language
+        filteredShows = filteredShows.filter(show => 
+          show.language === filters.language
         );
       }
 
       if (filters.minRating > 0) {
-        filteredShows = filteredShows.filter(
-          (show) => show.rating?.average >= filters.minRating
+        filteredShows = filteredShows.filter(show => 
+          show.rating?.average >= filters.minRating
         );
       }
 
@@ -74,8 +77,8 @@ const Home = () => {
             )}
             {!state.loading && !state.error && state.shows.length > 0 && (
               <>
-                <TVList shows={paginatedShows} />
-                <Pagination
+                <TVlist shows={paginatedShows} />
+                <Pagination 
                   totalItems={state.shows.length}
                   pageSize={pageSize}
                   currentPage={currentPage}
@@ -85,7 +88,7 @@ const Home = () => {
           </div>
 
           <div className="sidebar">
-            <WatchlistPanel />
+            <WatchListPanel />
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ const initialState = {
     language: "",
     minRating: 0,
   },
-  watchlist: JSON.parse(localStorage.getItem("watchlist")) || [],
+  watchlist: JSON.parse(localStorage.getItem("WatchLİstPanel")) || [],
   currentPage: 1,
   pageSize: 6,
   selectedShow: null,

@@ -1,4 +1,4 @@
-import TVlist from './TVlist'; 
+import TVlist from './Tvlist'; 
 import WatchListPanel from './WatchListPanel';
 import SearchBox from './Search';
 import Filters from './Filters';
